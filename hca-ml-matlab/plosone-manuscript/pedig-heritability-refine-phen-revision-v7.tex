@@ -1,0 +1,995 @@
+% Template for PLoS
+% Version 3.1 February 2015
+%
+% To compile to pdf, run:
+% latex plos.template
+% bibtex plos.template
+% latex plos.template
+% latex plos.template
+% dvipdf plos.template
+%
+% % % % % % % % % % % % % % % % % % % % % %
+%
+% -- IMPORTANT NOTE
+%
+% This template contains comments intended 
+% to minimize problems and delays during our production 
+% process. Please follow the template instructions
+% whenever possible.
+%
+% % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Once your paper is accepted for publication, 
+% PLEASE REMOVE ALL TRACKED CHANGES in this file and leave only
+% the final text of your manuscript.
+%
+% There are no restrictions on package use within the LaTeX files except that 
+% no packages listed in the template may be deleted.
+%
+% Please do not include colors or graphics in the text.
+%
+% Please do not create a heading level below \subsection. For 3rd level headings, use \paragraph{}.
+%
+% % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- FIGURES AND TABLES
+%
+% Please include tables/figure captions directly after the paragraph where they are first cited in the text.
+%
+% DO NOT INCLUDE GRAPHICS IN YOUR MANUSCRIPT
+% - Figures should be uploaded separately from your manuscript file. 
+% - Figures generated using LaTeX should be extracted and removed from the PDF before submission. 
+% - Figures containing multiple panels/subfigures must be combined into one image file before submission.
+% For figure citations, please use "Fig." instead of "Figure".
+% See http://www.plosone.org/static/figureGuidelines for PLOS figure guidelines.
+%
+% Tables should be cell-based and may not contain:
+% - tabs/spacing/line breaks within cells to alter layout or alignment
+% - vertically-merged cells (no tabular environments within tabular environments, do not use \multirow)
+% - colors, shading, or graphic objects
+% See http://www.plosone.org/static/figureGuidelines#tables for table guidelines.
+%
+% For tables that exceed the width of the text column, use the adjustwidth environment as illustrated in the example table in text below.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- EQUATIONS, MATH SYMBOLS, SUBSCRIPTS, AND SUPERSCRIPTS
+%
+% IMPORTANT
+% Below are a few tips to help format your equations and other special characters according to our specifications. For more tips to help reduce the possibility of formatting errors during conversion, please see our LaTeX guidelines at http://www.plosone.org/static/latexGuidelines
+%
+% Please be sure to include all portions of an equation in the math environment.
+%
+% Do not include text that is not math in the math environment. For example, CO2 will be CO\textsubscript{2}.
+%
+% Please add line breaks to long display equations when possible in order to fit size of the column. 
+%
+% For inline equations, please do not include punctuation (commas, etc) within the math environment unless this is part of the equation.
+%
+% % % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Please contact latex@plos.org with any questions.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+
+\documentclass[10pt,letterpaper]{article}
+\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
+
+% Use adjustwidth environment to exceed column width (see example table in text)
+\usepackage{changepage}
+
+% Use Unicode characters when possible
+\usepackage[utf8]{inputenc}
+
+% textcomp package and marvosym package for additional characters
+\usepackage{textcomp,marvosym}
+
+% fixltx2e package for \textsubscript
+\usepackage{fixltx2e}
+
+% amsmath and amssymb packages, useful for mathematical formulas and symbols
+\usepackage{amsmath,amssymb}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+
+% Use nameref to cite supporting information files (see Supporting Information section for more info)
+\usepackage{nameref,hyperref}
+
+% line numbers
+\usepackage[right]{lineno}
+
+% ligatures disabled
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = * }
+
+% rotating package for sideways tables
+\usepackage{rotating}
+
+% Remove comment for double spacing
+%\usepackage{setspace} 
+%\doublespacing
+
+% Text layout
+\raggedright
+\setlength{\parindent}{0.5cm}
+\textwidth 5.25in 
+\textheight 8.75in
+
+% Bold the 'Figure #' in the caption and separate it from the title/caption with a period
+% Captions will be left justified
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+
+% Use the PLoS provided BiBTeX style
+\bibliographystyle{plos2015}
+
+% Remove brackets from numbering in List of References
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+% Leave date blank
+\date{}
+
+% Header and Footer with logo
+\usepackage{lastpage,fancyhdr,graphicx}
+\usepackage{epstopdf}
+\pagestyle{myheadings}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
+\fancyheadoffset[L]{2.25in}
+\fancyfootoffset[L]{2.25in}
+\lfoot{\sf PLOS}
+
+%% Include all macros below
+
+\newcommand{\lorem}{{\bf LOREM}}
+\newcommand{\ipsum}{{\bf IPSUM}}
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{multirow}
+\usepackage{bbm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+
+\newcommand{\matrx}[1]{\ensuremath\boldsymbol{\rm #1}}
+\newcommand{\vect}[1]{\ensuremath\boldsymbol{\rm #1}}
+
+%\newcommand{\highlight}[1]{\colorbox{yellow}{#1}}
+%\newcommand{\highlight}[1]{}
+
+%% END MACROS SECTION
+
+
+\begin{document}
+\vspace*{0.35in}
+
+% Title must be 250 characters or less.
+% Please capitalize all terms in the title except conjunctions, prepositions, and articles.
+\begin{flushleft}
+{\Large
+\textbf\newline{An Effective Method to Identify Heritable Components from Multivariate Phenotypes}
+}
+\newline
+% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
+\\
+Jiangwen Sun\textsuperscript{1},
+Henry R. Kranzler\textsuperscript{2},
+Jinbo Bi\textsuperscript{1,*}
+\\
+\bigskip
+\bf{1} Department of Computer Science and Engineering, University of Connecticut, Storrs, Connecticut, United States of America
+\\
+\bf{2} Treatment Research Center, University of Pennsylvania Perelman School of Medicine and Philadelphia VAMC, Philadelphia, Pennsylvania, United States of America
+\\
+\bigskip
+
+% Insert additional author notes using the symbols described below. Insert symbol callouts after author names as necessary.
+% 
+% Remove or comment out the author notes below if they aren't used.
+%
+
+% Use the asterisk to denote corresponding authorship and provide email address in note below.
+* Corresponding author (jinbo@engr.uconn.edu)
+
+\end{flushleft}
+% Please keep the abstract below 300 words
+\section*{Abstract}
+Multivariate phenotypes may be characterized collectively by a variety of low level traits, such as in the diagnosis of a disease that relies on multiple disease indicators. Such multivariate phenotypes are often used in genetic association studies. If highly heritable components of a multivariate phenotype can be identified, it can maximize the likelihood of finding genetic associations. Existing methods for phenotype refinement perform unsupervised cluster analysis on low-level traits and hence do not assess heritability. Existing heritable component analytics either cannot utilize general pedigrees or have to estimate the entire covariance matrix of low-level traits from limited samples, which leads to inaccurate estimates and is often computationally prohibitive. It is also difficult for these methods to exclude fixed effects from other covariates such as age, sex and race, in order to identify truly heritable components. We propose to search for a combination of low-level traits and directly maximize the heritability of this combined trait. A quadratic optimization problem is thus derived where the objective function is formulated by decomposing the traditional maximum likelihood method for estimating the heritability of a quantitative trait. The proposed approach can generate linearly-combined traits of high heritability that has been corrected for the fixed effects of covariates. The effectiveness of the proposed approach is demonstrated in simulations and by a case study of cocaine dependence. Our approach was computationally efficient and derived traits of higher heritability than those by other methods. Additional association analysis with the derived cocaine-use trait identified genetic markers that were replicated in an independent sample, further confirming the utility and advantage of the proposed approach. 
+
+
+% Please keep the Author Summary between 150 and 200 words
+% Use first person. PLOS ONE authors please skip this step. 
+% Author Summary not valid for PLOS ONE submissions.   
+%\section*{Author Summary}
+
+
+\linenumbers
+
+\section*{Introduction}
+\label{introduction}
+Identifying genetic variation that underlies complex phenotypes has important implications for genetics and biology \cite{karp:genomics:2002,nature:gwas:2008}. 
+%Despite great progress in the development of molecular genetic methods that allow the genome-wide identification of rare and common variants, there has been considerably less progress in the refinement of phenotypes \cite{nature:gwas:2008}. 
+The power of most gene discovery studies is positively associated with the heritability of the trait \cite{Balding2007}. Higher heritability of a trait implies that the trait varies due to stronger genetic influence. Thus, there is greater chance to detect its genetic causative variants. The narrow sense heritability $h^2$ is defined by the percentage of phenotypic variance that is due to additive genetic effects. The broad sense heritability $H^2$ is defined by the proportion of phenotypic variance due to all genetic variation. 
+
+Many complex phenotypes comprise a variety of low level traits (or phenotypic features) that are often highly variable. Association analysis of such a complex phenotype is impeded by this phenotypic heterogeneity \cite{Girirajan:phhetero:2012}. For example, the diagnosis of drug dependence is determined by various patterns of drug use, their effects, and related behaviors \cite{pierucci:2007}. % including the age of first drug use, drug use frequency, negative consequences of drug use, withdrawal symptoms, and treatment history \cite{pierucci:2007}. 
+A binary multivariate trait defined by the diagnosis of cocaine dependence, which partitions the population into cases (subjects with the disorder) and controls (subjects without the disorder), cannot differentiate the heterogeneous manifestations of the disease. Because of this, the success of identifying genetic variants is limited when using this binary trait in association analysis \cite{Wang:2012:sd_genetic,Gelernter:CD:2014}. Identifying highly heritable components of the disease could permit the detection of genetic variants that are not detectable using the standard diagnosis-based traits \cite{VHu:autism:2011,bi:cdsubtype:2013,Kranzler:2008,Chan:2011,jinbo:subtyping:2011}. Efforts have been made to enhance the binary trait by capturing more phenotypic variation, such as defining a multivariate trait as symptom count \cite{Gelernter:CD:2014}. However, this kind of multivariate trait can have low heritability and may thus be sub-optimal for association analysis.
+
+%Existing phenotype refinement methods fall into two categories. The first category consists of methods that perform unsupervised multivariate cluster analysis \cite{gelernter:2006,babor:2006,VHu:autism:2011} or latent class analysis  \cite{schwartz:2010} of the low level traits. Clustering algorithms such as k-means \cite{r23} and hierarchical clustering \cite{Reynolds:1992} have been extensively used to group individuals based on their similarity on the low level traits \cite{weatherall:2010,burgel:2010}. Then a quantitative trait is derived as a function of the low level traits to represent each resultant subgroup. This trait calculates the likelihood of each individual's membership in the subgroup \cite{Kranzler:2008,Chan:2011,jinbo:subtyping:2011}. Heritability of the quantitative traits is often estimated to assess the validity of the sample grouping.  Such an approach is limited in the sense that heritability is only used as an after-fact validation measure rather than used in the generation of the groups or the quantitative traits. Hence, there is no guarantee that the traits identified by these methods will have high heritability.  
+
+%The second category of methods is more relevant to our work. Methods in this category aim to 
+Heritable component analysis methods identify principal components of the data, i.e., linear combinations of low level traits, that are heritable \cite{Ott:1999:pch,Wang:2007:pch-ridge,Klei:2008:pch,pch:Oualkacha:2012}. All current methods decompose the identification of heritable components into solving two separate subproblems in sequence. They first estimate two covariance matrices of the low-level traits: $\matrx \Sigma_a$, the variance due to additive genetic effects taking into account the relationships of individuals (family structure); and $\matrx \Sigma$, the covariance matrix due to effects other than additive genetic effects. If there are $d$ low level traits in $\vect x$, this means that two $d$-by-$d$ matrices need to be estimated from the sample. Once the two covariance matrices are computed, a generalized eigenproblem is solved to identify the combination coefficients $\vect w$ so that the ratio of $\vect w ^\top \matrx \Sigma_a \vect w / \vect w^\top \matrx \Sigma \vect w$ is maximized, leading to high heritability for the combined trait $\vect w^\top \vect x$. 
+
+A few methods have been developed in the literature to estimate the two covariance matrices. In \cite{Wang:2007:pch-ridge,Klei:2008:pch}, the two matrices are estimated based on the genetic effect of a single quantitative-trait locus to all the low level traits. This method has limited utility when the variance-covariance of the low level traits is due to multiple genetic loci (which is often the case for complex phenotypes). In \cite{Ott:1999:pch,pch:Oualkacha:2012,mendal2013}, the two covariance matrices are estimated from family pedigrees of the sample. The approach used in \cite{Ott:1999:pch} takes only siblings in a family, so it is inadequate to handle general (complex) pedigrees.  The two approaches in \cite{pch:Oualkacha:2012} and \cite{mendal2013} can handle general pedigrees. The first one derives an analytic formula for the covariance matrices based on Analysis of Variance (ANOVA). Although reducing the computational cost, the analytic formula is unable to take into account the fixed effects from covariates such as sex, age or race, which is also a problem for the method in \cite{Ott:1999:pch}. Currently, the most comprehensive approach is a maximum likelihood method \cite{mendal2013} that can estimate the fixed effects and covariance matrices together, but this method is computationally prohibitive as discussed in \cite{pch:Oualkacha:2012}. Even when $d=20$ low level traits are used, this method can run for days, and as observed in our experiments, the method may not converge. It requires very large sample to obtain reliable estimates of two covariance matrices and $d$ combination coefficients, totally $2 d^2 + d$ parameters, from a sample.
+
+
+We show that, to obtain highly heritable components of a multivariate trait, the estimation of two covariance matrices is unnecessary. We propose an optimization approach that directly identifies a linear combination of low level traits whose estimated heritability is maximized. This optimization problem is formulated by decomposing the maximum likelihood method for estimating trait heritability. An {\em sequential quadratic programming} algorithm is developed to optimize the problem. We then extend the basic formulation to correct fixed effects of covariates in the component analysis. Because we do not estimate any covariance matrix, our approach is computationally much more efficient than those in \cite{Ott:1999:pch,mendal2013}. The proposed approach is validated in both simulations and a case study on cocaine dependence. The effectiveness of the approach is demonstrated not only by the higher cross-validated heritability of the derived traits than the existing methods but also by a follow-up association study that compares the utility of the derived traits with the commonly used phenotype. Specifically, a highly heritable multivariate trait was derived for cocaine dependence. More statistically significant associations were found for this trait than for a symptom-count phenotype. 
+
+% You may title this section "Methods" or "Models". 
+% "Models" is not a valid title for PLoS ONE authors. However, PLoS ONE
+% authors may use "Analysis" 
+\section*{Methods}
+We first introduce the standard methods for heritability estimation, and then derive our formulation that maximizes the heritability of a linearly-combined trait. An efficient algorithm is developed to optimize the formulation. At last, we extend the approach to take into consideration the fixed effects of covariates.
+\subsection*{Background: Heritability Estimation}
+\label{sec:background}
+To estimate the heritability of a quantitative trait $y$, the well established maximum likelihood method is based on linear mixture models \cite{Lange1976,Balding2007}. The method assumes that the phenotype $\vect y^i$ of a family $i$ follows a multivariate normal distribution with covariance $\matrx \Omega_i$ and separate means for male and female family members, $\mu_m$ and $\mu_f$, respectively. Separate means are used for males and females based on the general observation that males and females present differences in quantitative traits, such as height and weight. The $(j,k)$-th entry of $\matrx \Omega_i$ is the phenotypic covariance of two family members $j$ and $k$,  given by 
+\begin{equation}
+\label{equ:covariance}
+cov(y^i_j, y^i_k)=2\sigma_a^2\matrx \Phi_{jk}^i + \sigma_d^2\matrx \Delta_{jk}^i + \sigma_e^2\matrx \Gamma_{jk}^i
+\end{equation}
+where $\sigma_a^2$ and $\sigma_d^2$ are the variance components due to additive and dominant genetic effects, respectively, and $\sigma_e^2$ denotes the variance component due to environmental factors. Eq. (\ref{equ:covariance}) can be extended to include other effects, such as an epistatic genetic effect $\sigma_I^2$. The quantity $\matrx \Phi_{jk}^i$ is the kinship coefficient between members $j$ and $k$. It is the probability that two alleles randomly drawn from $j$ and $k$ at a genetic locus are identical by descent (IBD), i.e., that these two alleles are identical copies of the same ancestral allele. An allele is one of the alternative forms at a genetic locus. As the human genome is diploid, each individual has two copies of an allele that may differ at a genetic locus. The quantity $\matrx \Delta_{jk}^i$ is the probability that members $j$ and $k$ share both alleles at a genetic locus. Both matrices $\matrx \Phi_i$ and $\matrx \Delta_i$ can be calculated from the family pedigrees \cite{Balding2007}. Example entries of $\matrx \Phi$ and $\matrx \Delta$ between selected family members  are illustrated in Table \ref{tbl:kinship} where random mating is assumed. The parameter $\matrx \Gamma_{jk}^i$ is an environmental indicator that encodes whether $j$ and $k$ live together ($\matrx \Gamma_{jk}^i=1$) or apart ($\matrx \Gamma_{jk}^i=0$). 
+
+\begin{table}[t]
+\caption{Elements of the matrices $\matrx \Phi$ and $\matrx \Delta$ for selected relationships in a family when random mating is assumed.}
+\label{tbl:kinship}
+\vskip 0.15in
+\begin{center}
+\begin{small}
+
+\begin{tabular}{lcc}
+\hline
+Relationship & $\matrx \Phi$ & $\matrx \Delta$  \\
+\hline
+Same person   & 1/2  &  1  \\
+Parent-Child    & 1/4  &  0   \\
+Full-siblings   & 1/4  &  1/4  \\
+Half-siblings   & 1/8  &  0   \\
+Monozygotic twins    &  1/2  &  1 \\
+Grandparent-grandchild   &  1/8  &  0 \\
+Uncle/aunt-nephew/niece   &  1/8  &  0 \\
+First cousins   &  1/16  &  0 \\
+Double first cousins   &  1/8  &  1/16 \\
+Spouses    &  0  &  0 \\
+\hline
+\end{tabular}
+
+\end{small}
+\end{center}
+\vskip -0.1in
+\end{table}
+
+The narrow sense heritability is given by $h^2=\sigma_a^2/\sigma_p^2$ where $\sigma_p^2$ is the total variance in $y$, i.e., $\sigma_p^2 = \sigma_a^2 + \sigma_d^2 + \sigma_e^2$, while the broad sense heritability is given by $H^2=(\sigma_a^2+\sigma_d^2)/\sigma_p^2$. In this paper, we target at quantitative traits with higher narrow sense heritability, which we henceforth simply refer to as heritability. However, our formulation can be easily modified to derive a quantitative trait of high $H^2$.
+
+The five parameters, $\mu_m$, $\mu_f$, $\sigma_a^2$, $\sigma_d^2$ and $\sigma_e^2$, are estimated by maximizing the log likelihood of the trait values over all sample families \cite{Lange1976}. The log likelihood is computed by 
+\begin{equation}
+\label{equ:loglikelihood}
+LL=\sum_i{-\frac{1}{2}\ln|\matrx \Omega_i| - \frac{1}{2}(\vect y^i-\mu^i)^\top \matrx \Omega_i^{-1}(\vect y^i-\mu^i)},
+\end{equation}
+where $\mu^i$ denotes a vector of the means $\mu_m$ and $\mu_f$ for male or female members, respectively, in the family $i$. The gradient and Hessian of Eq.(\ref{equ:loglikelihood}) with respect to $\mu_m$, $\mu_f$, $\sigma_a^2$, $\sigma_d^2$ and $\sigma_e^2$ can be calculated, and a Newton-Raphson algorithm or a scoring method \cite{Lange1976} can be applied to maximize the log likelihood Eq.(\ref{equ:loglikelihood}). 
+
+The heritability of a quantitative trait $y$ is often estimated with correction for the effects of covariates $\vect z$, such as age, sex, or race.  These covariate effects are modeled as fixed effects on $y$. Thus, a linear regression model $y = \vect z^\top \vect v + \epsilon$ can be built where $\vect v$ indicates the combination weights for the covariates. The heritability of the residual $\epsilon$ is then estimated using the described maximum likelihood method and treated as the heritability of $y$ after adjusting for covariate effects. 
+
+%{\bf Heritability is often estimated by a mixed-effect model with fixed effects from covariates, such as age or sex, and random effects from genetic factors. In other words, for each pedigree $i$, we have $y_i  = Z_i v + G_i \beta +\epsilon_i$ where $Z_i$ and $G_i$ are two matrices comprised the fixed-effect covariates and standardized genotypes of each family member as rows, $v$ and $\beta$ are two vectors of the fixed and random effect coefficients, respectively, and $\epsilon_i$ is a vector of residual effects. The above variance analysis model can be then applied to the residual of the fixed effect component of the model as $\hat{y}_i = y_i - Z_i v$, which means $\hat{y}_i$ is assumed to follow multivariate Gaussian with covariance matrix $\Omega$ of entries Eq.(\ref{equ:covariance}). }
+
+\subsection*{Proposed Quadratic Optimization}
+\label{sec:formulation}
+In heritability estimation, a trait is given, and we search for the values of $\sigma_a^2$, $\sigma_d^2$ and $\sigma_e^2$ that maximize the likelihood of observing the trait values and compute the heritability as $\sigma_a^2/(\sigma_a^2 + \sigma_d^2 +\sigma_e^2)$. In our study, we solve the inverse problem that a trait must be derived so that its heritability is maximized when estimated by the above maximum likelihood method.  
+
+
+For a given set of $d$ phenotypic features $\vect x$, we find a linearly combined trait $y: y=\vect x^\top \vect w$. If a trait $y$ has the highest possible heritability, the covariance of $y$ among any family members in family $i$, $cov(y^i_j, y^i_k)$, should be due to the additive effect $\sigma_a^2$ only, and $\sigma_d^2=\sigma_e^2=0$. In other words, for such a trait, the covariance matrix of the phenotype $\vect y^i$ of a family $i$ relies only on the additive effect parameter $\sigma_a^2$ and the kinship matrix $\matrx \Phi^i$, i.e., $\matrx \Omega_i = 2 \sigma_a^2 \matrx \Phi^i$. Thus $\sigma_a^2$ is equal to the total variance $\sigma_p^2$ of $y$. We need to search for the values of $\vect w$ that maximize the likelihood of observing $\sigma_d^2 = \sigma_e^2=0$, or in other words, that maximize the likelihood of $\matrx \Omega_i = 2 \sigma_a^2 \matrx \Phi^i$.
+%the dependence of the covariance $\matrx \Omega_i$ of a pedigree $i$ on the additive effect.  
+
+Let $\matrx X_i$ be the data matrix on the $d$ features (as columns) for the subjects (as rows) in family $i$. Then the trait values of the family members form a vector $\vect y^i = \matrx X_i ^\top \vect w$. Because $y$ is homogeneously dependent on the unknown $\vect w$, $\vect w$ can be scaled so that the sample variance of $y$ is $1$, which implies that $\sigma_p^2 = 1$ (and hence $\sigma_a^2 = 1$). Substituting the values of $\matrx \Omega_i$, $\vect y^i$ and $\sigma_a^2$ into the log likelihood in Eq.(\ref{equ:loglikelihood}) yields the following maximization problem: 
+\begin{equation}
+\label{equ:loglikehood_raw}
+\max_{\vect w, \mu_m, \mu_f} \sum_i{-\frac{1}{2}\ln |2\matrx \Phi_i| - \frac{1}{4}(\matrx X_i ^\top \vect w-\mu^i)^\top \matrx \Phi_i^{-1}(\matrx X_i ^\top \vect w-\mu^i)}, \nonumber
+\end{equation}
+which is equivalent to the following minimization problem after eliminating constants (for example, $\frac{1}{2}\ln{|2 \Phi_i|}$ does not vary in terms of $\vect w$, $\mu_m$ or $\mu_f$, and thus is a constant,)
+\begin{equation}
+\label{equ:hh_obj1}
+\min_{\vect w,\mu_m,\mu_f} \sum_i{(\matrx X_i^\top \vect w -\mu^i)^\top \matrx \Phi_i^{-1} (\matrx X_i^\top \vect w -\mu^i)}.
+\end{equation}
+
+We then consolidate the parameters $\vect w$, $\mu_m$ and $\mu_f$ into a single column vector $\vect \beta=[\vect w^\top, \mu_m, \mu_f]^\top$. Note that $\mu^i$ is a vector of length of the number of family members with corresponding entries equal to either $\mu_m$ or $\mu_f$ depending on the gender of the family member. We can simplify Eq.(\ref{equ:hh_obj1}) to have $\matrx X_i^\top \vect w -\mu^i = \matrx H_i^\top \vect \beta$ and $\matrx H_i$ is defined by 
+\begin{equation*}
+\matrx H_i=[\matrx X_i^\top,[-1/0]_{i}^m,[-1/0]_{i}^f]^\top
+\end{equation*}
+where $[-1/0]_{i}^m$ and $[-1/0]_{i}^f$ are column vectors with length equal to the number of members in family $i$. For males in the family, $-1$ is assigned at their corresponding entries in $[-1/0]_{i}^m$ and $0$ at other positions of the vector. The vector of $[-1/0]_{i}^f$ is similarly defined for female family members. For instance, a family $i$ has three members included in a study, and they are ordered as a male member, a female member and then another male member. The vector $[-1/0]_{i}^m = [-1, 0, -1]^\top$ and the vector $[-1/0]_{i}^f = [0, -1, 0]^\top$, which ensures that $[-1/0]_{i}^m \mu_m + [-1/0]_{i}^f \mu_f = - \mu^{i}$. Then, the objective function of Eq.(\ref{equ:hh_obj1}) becomes
+\begin{equation*}\sum_i{(\matrx X_i^\top \vect w -\mu^i)^\top \matrx \Phi_i^{-1} (\matrx X_i^\top \vect w -\mu^i)} = \sum_i (\vect \beta^\top \matrx H_i) \matrx \Phi_i^{-1} (\matrx H_i^\top \vect \beta) = \vect \beta^\top (\sum_i \matrx H_i \matrx \Phi_i^{-1} \matrx H_i^\top ) \vect \beta.
+\end{equation*} 
+By stacking the $\matrx H_i$ matrices of different families in columns, we get another matrix $\matrx H$. Similarly, we can form a matrix $\matrx X$, so the trait values of all subjects $\vect y=\matrx X ^\top \vect w$. The sample variance of the trait $y$ is, by definition, $(1/n) (\vect y - \vect \mu)^\top (\vect y - \vect \mu)$. It is equal to $(1/n) (\matrx X ^\top \vect w - \vect \mu)^\top(\matrx X ^\top \vect w-\vect \mu) = (1/n)\vect \beta^\top \matrx H \matrx H^\top \vect \beta$. Then, the condition of $\sigma_p^2=1$ corresponds to a constraint on $\vect \beta$: $(1/n)\vect \beta^\top \matrx H \matrx H^\top \vect \beta = 1$, which can be rewritten as $\vect \beta^\top \matrx H \matrx H^\top \vect \beta - n = 0$. 
+
+As a matter of fact, $\mu_m$ and $\mu_f$ are not free parameters, as they are determined once $\vect w$ is determined. They are equal to the sample means of the trait, i.e., $\mbox{Mean}(\vect x^\top \vect w)$, for male and female, respectively. Let $\vect x_m$ and $\vect x_f$ be the two means of the data vector $\vect x$ respectively over male and female samples. Then, $\vect x_m ^\top \vect w = \mu_m$ and $\vect x_f ^\top \vect w = \mu_f$. These equations give two additional constraints.  Let $
+\vect a_m=[\vect x_m^\top, -1, 0]^\top$, $\vect a_f=[\vect x_f^\top, 0, -1]^\top$,
+then the two constraints on $\vect \beta$ state that $\vect a_m^\top \vect \beta =0$ and $\vect a_f^\top \vect \beta =0$.
+
+Imposing all of these constraints on Eq.(\ref{equ:hh_obj1}) yields an optimization problem where a quadratic objective needs to be minimized subject to a quadratic constraint and two linear equality constraints as follows: 
+\begin{equation}
+\label{equ:problem1}
+\begin{split}
+\min_{\vect \beta} \phantom{aa} & \vect \beta^\top (\sum_i \matrx H_i \matrx \Phi_i^{-1} \matrx H_i^\top)\vect \beta,  \\
+\mbox{subject to} \phantom{aa} & \vect \beta^\top \matrx H \matrx H^\top \vect \beta - n = 0,  \\
+                               & \vect a_m^\top \vect \beta = 0,~~\vect a_f^\top \vect \beta = 0.
+\end{split}
+\end{equation}
+
+According to statistical learning theory \cite{Vapnik:1999:learning_theroy}, optimizing only the empirical heritability on the training sample as in Eq.(\ref{equ:problem1}) will lead to the so-called overfitting problem, which means that the resultant model $y = \vect x ^\top \vect w$ has low validation heritability despite a high training heritability. To enhance the generalizability of the derived model to new samples, a regularization condition on $\vect w$, $R(\vect w)$, is required to control the complexity of the model. The objective function in Eq.(\ref{equ:problem1}) thus becomes
+\begin{equation}
+\label{equ:problem2}
+\begin{split}
+\vect \beta^\top (\sum_i \matrx H_i \matrx \Phi_i^{-1} \matrx H_i^\top)\vect \beta + \lambda R(\vect w), \\
+\end{split}
+\end{equation}
+where $\lambda$ is a pre-specified tuning parameter for balancing the two terms in the objective function, and $R(\vect w)$ can be realized in different forms and be application-specific. For example, $R(\vect w)$ can be implemented with the $\ell_1$ vector norm: $||\vect w||_1 = \sum_{j=1}^d |w_j|$, which is known to create shrinkage effects on $\vect w$ as shown in the Least Absolute Shrinkage and Selection Operator (LASSO) method \cite{tibshirani:1996}. When features in $\vect x$ are clustered in multiple groups and sparsity in the level of each feature group is desirable, $R(\vect w)$ can be implemented by the $\ell_{2,1}$ vector norm as used in the group LASSO \cite{Meier:groupLASSO:2008} and defined by $
+||\vect w||_{2,1} = \sum_{\ell=1}^L \sqrt{\sum_{j \in \mathcal{G_{\ell}}} \vect w_j^2}$
+where $\mathcal{G_{\ell}}$ contains the indices of the features in the group $\ell$. 
+
+Specifically, we develop an algorithm in the next section to solve the following optimization problem with the $\ell_1$ norm regularization condition
+\begin{equation}
+\label{equ:problem_onenorm1}
+\begin{split}
+\min_{\vect \beta} \phantom{aa} & \vect \beta^\top (\sum_i \matrx H_i \matrx \Phi_i^{-1} \matrx H_i^\top)\vect \beta + \lambda ||\vect w||_1, \\
+\mbox{subject to} \phantom{aa} & \vect \beta^\top \matrx H \matrx H^\top \vect \beta - n = 0,  \\
+                               & \vect a_m^\top \vect \beta = 0,~~\vect a_f^\top \vect \beta = 0.
+\end{split}
+\end{equation}
+Note that Problem (\ref{equ:problem1}) is a special case of Problem (\ref{equ:problem_onenorm1}) when $\lambda=0$. Hence, a solver for Problem (\ref{equ:problem_onenorm1}) can also solve Problem (\ref{equ:problem1}).
+
+\subsection*{Solving the Proposed Optimization Problem}
+\label{optimization}
+The objective function in Eq.(\ref{equ:problem_onenorm1}) is not differentiable because of the $\ell_1$ norm regularization condition. However, by a widely used change-of-variables strategy, we can convert it into an equivalent differentiable form so gradient based solvers can be used. We introduce two sets of variables $\vect u \ge 0$ and $\vect v \ge 0$ both of length equal to that of $\vect w$. We set $\vect w = \vect u - \vect v$, which gives $\matrx X_i^\top \vect w = \matrx X_i^\top \vect u - \matrx X_i^\top \vect v$. Correspondingly, we replace the parameter vector $\vect \beta$ by $
+\vect \gamma = [\vect u^\top, \vect v^\top, \mu_m, \mu_f]^\top$, and replace $\matrx H_i$ by 
+\begin{equation*}
+\matrx K_i=[\matrx X_i^\top, -\matrx X_i^\top, [-1/0]_{im},[-1/0]_{if}]^\top,
+\end{equation*}
+so we have $\matrx H_i \vect \beta =  \matrx K_i \vect \gamma$. 
+
+Stacking all $\matrx K_i$'s in columns leads to the full matrix $\matrx K$. The quadratic constraint in Eq.(\ref{equ:problem_onenorm1}) then becomes $\vect \gamma^\top \matrx K \matrx K^\top \vect \gamma - n =0$. By setting $
+\vect b_m^\top=[\vect x_m, - \vect x_m, -1, 0]^\top$, $\vect b_f^\top =[\vect x_f, - \vect x_f, 0, -1]^\top$, the linear constraints in Eq.(\ref{equ:problem_onenorm1}) become $\vect b_m^\top \vect \gamma = 0$ and $\vect b_f^\top \vect \gamma = 0$. 
+We have bound constraints on the new variables, i.e., $\vect u \ge 0$ and $\vect v \ge 0$. We hence design a matrix $\matrx J = [\matrx I_{2d\times 2d}, [0]_{2d}, [0]_{2d}] $ where $\matrx I_{2d \times 2d}$ is the identity matrix of dimension $2d \times 2d$, and $[0]_{2d}$ is a column vector of all zero entries with length of $2d$. Then, the bound constraints can be written as $\matrx J \vect \gamma \ge 0$.
+Overall, with the new variables $\vect u$ and $\vect v$, Eq.(\ref{equ:problem_onenorm1}) can be re-written as follows
+\begin{equation}
+\label{equ:problem_onenorm2}
+\begin{split}
+\min_{\vect \gamma} \phantom{aa} & f: \vect \gamma^\top (\sum_i \matrx K_i \matrx \Phi_i^{-1} \matrx K_i^\top) \vect \gamma + \lambda \sum_{j=1}^{2d}\gamma_j \\
+\mbox{subject to} \phantom{aa} & g_1: \vect \gamma^\top \matrx K \matrx K^\top \vect \gamma - n = 0,  \\
+                               & g_2: \vect b_m^\top \vect \gamma = 0,   \\
+                               & g_3: \vect b_f^\top \vect \gamma = 0, \\
+                               & g_{4:e}:\matrx J \vect \gamma \ge 0,
+\end{split}
+\end{equation}
+where $e=2d+3$ is the total number of constraints in the problem. 
+
+It can be proved mathematically that the optimal solution of Eq.(\ref{equ:problem_onenorm2}) is identical to the optimal solution of Eq.(\ref{equ:problem_onenorm1}) in the sense that the optimal $\vect w = \vect u - \vect v$. Note that the regularization condition in Eq.(\ref{equ:problem_onenorm2}), $\sum_{j=1}^{2d} \gamma_j$, is just equal to $\sum_{j=1}^d (u_j + v_j)$. At optimality of Eq.(\ref{equ:problem_onenorm2}), either $u_j=0$ or $v_j=0$ for the $j$th feature because otherwise they would not be optimal. If both $u_j>0$ and $v_j>0$ and assume $u_j \ge v_j$, then we have another solution, ($\tilde{u}_j = u_j -v_j$, $\tilde{v}_j=0$), that achieves lower objective value than $(u_j,v_j)$ because the first term of $f$ remains the same whereas the second term of $f$ is reduced by $2 v_j$. Thus, at optimality, the regularizer of Eq.(\ref{equ:problem_onenorm2}) $\sum_{j=1}^{2d} \gamma_j = \sum_{j=1}^d (u_j + v_j) = \sum_{j=1}^d |u_j - v_j| = \sum_{j=1}^d |w_j|$.
+
+Although Eq.(\ref{equ:problem_onenorm2}) is not a convex problem due to the quadratic equality constraint $g_1$, we can solve it efficiently by the framework of sequential quadratic programming (SQP) \cite{Nocedal:06}. A SQP algorithm solves the optimization problem iteratively. At each iteration, it approximates the original problem by a convex quadratic program, for which a solution can be easily computed. A quadratic program is defined as a minimization of a quadratic objective function subject to linear constraints. To form the approximate subproblem, the Lagrangian function of Eq.(\ref{equ:problem_onenorm2}) is used:
+\begin{equation}
+\label{equ:problem_onenorm_lagrangian}
+\mathcal{L}(\vect \gamma, \vect \alpha)=f(\vect \gamma)- \sum_k\alpha_k g_k(\vect \gamma)
+\end{equation}
+where $\vect \alpha$ contains all Lagrange multipliers and $k$ indexes the constraints. We use the second-order Taylor expansion to approximate the Lagrangian which forms the quadratic objective function of the subproblem, and use the first-order expansions to approximate the original constraints which form linear constraints for the subproblem.
+
+The gradients of the objective function $f$ and the constraints $g_{i:i=1:e}$ with respect to $\vect \gamma$ can be calculated as follows:
+\begin{equation*}
+\begin{split}
+\triangledown f = 2(\sum_i \matrx K_i \matrx \Phi_i^{-1} \matrx K_i^\top) \vect \gamma + \lambda \vect c,\\ \triangledown g_1 = 2(\matrx K \matrx K^\top) \vect \gamma, ~~\triangledown g_2 = \vect b_m, \\
+\triangledown g_3 = \vect b_f, ~~\triangledown g_{4:e} = c
+\end{split}
+\end{equation*} where $\vect c = [[1]_{2d}^\top, 0, 0]^\top$ and $[1]_{2d}$ is a column vector of all ones with length of $2d$.
+The Hessian of $\mathcal{L}$ with respect to $\vect \gamma$ is calculated as:
+\begin{equation}
+\label{equ:problem_onenorm_hessian}
+\triangledown^2_{\vect\gamma \vect\gamma}\mathcal{L} = 2\sum_i \matrx K_i \matrx \Phi_i^{-1} \matrx K_i^\top - 2\alpha_1\matrx K \matrx K^\top.
+\end{equation}
+
+The subproblem at each iteration is formulated based on the current iterates $\vect \gamma_t$ and Lagrange multipliers $\vect \alpha_t$. At the iteration $t+1$, the search directions for both $\vect \gamma$ and $\vect \alpha$ can be computed by solving the following quadratic program 
+\begin{equation}
+\label{equ:problem_onenorm_subproblem}
+\begin{split}
+\min_{\vect p} \phantom{aa} & f(\vect \gamma_t) + \triangledown f(\vect \gamma_t)^\top \vect p + \frac{1}{2}\vect p^\top \triangledown^2_{\vect\gamma \vect\gamma}\mathcal{L}(\vect \gamma_t, \vect \alpha_t) \vect p \\
+\mbox{subject to} \phantom{aa} & \triangledown g_k(\vect \gamma_t)^\top \vect p + g_k(\vect \gamma_t) = 0, k \in [1:3]  \\
+                               & \triangledown g_k(\vect \gamma_t)^\top \vect p + g_k(\vect \gamma_t) \succeq 0, k \in [4:e]  
+\end{split}
+\end{equation}
+where $\vect p$ is the search direction of $\vect \gamma$, along which the objective function $f$ can be decreased. Let $\hat{\vect p}_t$ be the solution to this subproblem and $\hat{\vect q}_t$ be the corresponding optimal Lagrange multipliers of $\hat{\vect p}_t$, the search direction of $\vect \alpha$ is calculated as $\hat{\vect q}_t - \vect \alpha_t$. Then, a line search method, such as those described in \cite{Nocedal:06}, can be used to determine a step size of moving along the directions. Then, $\vect \gamma$ and $\vect \alpha$ are updated as follows:
+\begin{equation}
+\label{equ:problem_onenorm_update}
+\vect \gamma_{t+1} = \vect \gamma_t + s\hat{\vect p}_t, ~~~\vect \alpha_{t+1} = \vect \alpha_t + s(\hat{\vect q}_t - \vect \alpha_t).
+\end{equation}
+Algorithm \ref{alg:sqp} summarizes the SQP algorithm that we developed to solve Eq.(\ref{equ:problem_onenorm2}), and hence Eq.(\ref{equ:problem_onenorm1}). 
+
+\begin{algorithm}[tb]
+   \caption{A sequential quadratic programming approach to solving Eq.(\ref{equ:problem_onenorm2})}
+   \label{alg:sqp}
+\begin{algorithmic}
+   \STATE {\bfseries Input:} $\matrx K_i$, $\matrx \Phi_i$, $\vect a'_m$, $\vect a'_f$, $\lambda$
+   \STATE {\bfseries Output:} $\vect \gamma$
+   \STATE 1. Initialize $\vect \gamma$ with $\vect u = \vect 1$, $\vect v = \vect 0$, and $\mu_m$, $\mu_f$ equal to the sample male and female means of the obtained trait when $\vect w= \vect 1$.
+   \STATE 2. Initialize $\vect \alpha$ with $\vect \alpha = \vect 1$.
+   \STATE 3. Evaluate $f$, $\triangledown f$, $\triangledown g_k$ and $\triangledown^2_{\vect \gamma \vect \gamma}\mathcal{L}$ with the current $\vect \gamma$ and $\vect \alpha$.
+   \STATE 4. Solve Eq.(\ref{equ:problem_onenorm_subproblem}) to obtain $\hat{\vect p}$ and $\hat{\vect q}$.
+   \STATE 5. Perform line search to find the learning step size $s$. 
+   \STATE 6. Update $\vect \gamma$ and $\vect \alpha$ as in Eq.(\ref{equ:problem_onenorm_update}).
+   \STATE Repeat 3-6 until $\vect \gamma$ reaches a fixed point.
+\end{algorithmic}
+\end{algorithm}
+
+\subsection*{Correction for Covariates} \label{sec:correcting}
+As discussed in the background section, the heritability of a quantitative trait $y$ with effects from covariates $\vect z$ is equal to the heritability of the residual $\epsilon$ of the linear model $y = \vect z^\top \vect v + \epsilon$. Therefore, our objective here is to find $\hat{\vect w}$ and $\hat{\vect v}$ that optimize the heritability estimate of $\epsilon: \epsilon = \vect x^\top \vect w - \vect z^\top \vect v$, as $y=\vect x^\top \vect w$. Let $\matrx Z_{p\times n}$ be the data matrix on $\vect z$ of length $p$ for the $n$ subjects, the residual is calculated for all the subjects as $\vect \epsilon = \matrx X^\top \vect w - \matrx Z^\top \vect v$.
+
+Given the data $\matrx Z$ and $\vect y$, a linear regression model $y=\vect z^\top \vect v + \epsilon$ is typically obtained through a least squares method which has an analytical solution, $\vect{\hat v} = (\matrx Z \matrx Z^\top)^{-1}\matrx Z \vect y$. As $\vect y = \matrx X^\top \vect w$, we have $\vect{\hat v} = (\matrx Z \matrx Z^\top)^{-1}\matrx Z \matrx X^\top \vect w$ and 
+\begin{equation*}
+\vect \epsilon = (\matrx X^\top - \matrx Z^\top (\matrx Z \matrx Z^\top)^{-1}\matrx Z \matrx X^\top)\vect w.
+\end{equation*}  
+Let $\matrx M = (\matrx X^\top - \matrx Z^\top (\matrx Z \matrx Z^\top)^{-1}\matrx Z \matrx X^\top)^\top$, which can be pre-calculated from data, the calculation of $\vect \epsilon$ can be rewritten as $\vect \epsilon = \matrx M^\top \vect w$. Then, the objective of optimizing the heritability of $\epsilon$ can be translated to finding the optimal ${\vect w}$ that gives an $\vect \epsilon$ of highest estimate of heritability. Comparing to the problem of finding $\vect w$ that gives a trait $y = \vect x^\top \vect w$ with highest possible heritability, the only difference we have here is that the design matrix has been changed from $\matrx X$ to $\matrx M$ for the parameters $\vect w$. Therefore, we can use the same SQP algorithm (Algorithm \ref{alg:sqp}) to find the $\vect w$ that optimizes the heritability of $\epsilon$. An interesting observation in our derivation is that correcting a quantitative trait to account for covariant effects is equivalent to correcting the data matrix that used to derive the trait. 
+
+\subsection*{Algorithm Evaluation}
+The proposed approach was first validated in simulations where we compared it with the current two-step approaches, i.e., estimating the two covariance matrices from pedigrees first and then solving an eigenproblem. We compared with all the three different methods that can be used to estimate the variance-covariance matrices, which were referred to, respectively, as Ott \cite{Ott:1999:pch}, Anova \cite{pch:Oualkacha:2012} and ML \cite{mendal2013}. The following {\em Results} section provides the details of the simulation and empirical evidence showing the superior performance of our algorithm.  
+
+After validated in simulations, the proposed approach was then used in a case study to analyze a real-world dataset that was aggregated from genetic studies of cocaine dependence (CD) \cite{Gelernter:CD:2014,Gelernter:OD:2014}. Our algorithm was able to derive a quantitative trait with higher heritability than that of commonly used CD phenotypes. To show how our approach could help genetic association analysis, we compared the utility of the derived trait against the symptom-count phenotype as traits in association analysis and replicated the findings on a separate sample. The narrow sense heritability of all of the tested traits in this study was estimated by the widely-used \textit{polygenic} function in the Sequential Oligogenic Linkage Analysis Routines (SOLAR) program \cite{almasy:1998}. 
+
+\subsubsection*{Ethics statement}
+The {\em Semi-Structured Assessment for Drug Dependence and Alcoholism} (SSADDA) dataset \cite{Gelernter:CD:2014} was used in both our simulations and the case study to evaluate the proposed algorithm. The SSADDA subjects were recruited from multiple sites, including the University of Connecticut Health Center, Yale University School of Medicine, the University of Pennsylvania School of Medicine, McLean Hospital and the Medical University of South Carolina. All subjects gave written, informed consent to participate, using procedures approved by the institutional review board (IRB) at each participating site. Readers can consult with \cite{Gelernter:CD:2014} for the details of subject recruitment in those studies. The SSADDA data were de-identified and the analyses in this present study were approved by the University of Connecticut IRB Protocol H15-045 and the University of Pennsylvania IRB Protocals 804787 and 812856.
+
+
+% Results and Discussion can be combined.
+\section*{Results}
+\label{sec:results}
+This section provides the details of the simulation process and the case study of CD together with the empirical evidence showing the superior performance of our approach.
+
+\subsection*{Simulations}
+In order to make our synthetic data more realistic but with known patterns, we created the synthetic data based on family structures in the SSADDA dataset. In this dataset, there were totally 6810 subjects, of which 1915 were from small nuclear families and the remaining subjects were unrelated individuals. Based on the family structures in this data, we synthesized two quantitative traits following the same assumptions used in the maximum likelihood method for heritability estimation \cite{Lange1976}. 
+
+\subsubsection*{Experimental data and procedure}
+The values of the first trait $y_1$ were randomly drawn for each family  from a multivariate Gaussian distribution: $N(\vect \mu,\matrx \Omega)$, where $\vect \mu$ and $\matrx \Omega$ were determined as follows. The dimension of $\vect \mu$ was determined by the number of subjects in the family, such that each dimension corresponded to an individual in the family. The value of $\vect \mu$ used in the simulations may vary  between families according to the gender of the members. Precisely, if a family member is male, $\mu$ was set to $\mu_m$; otherwise it was set to $\mu_f$. The covariance matrix $\matrx \Omega$ was given by the following equation:
+\begin{equation}
+\label{equ:trait_cov}
+\matrx \Omega = 2\sigma_a^2 \matrx \Phi + \sigma_d^2 \matrx \Delta + \sigma_e^2 \matrx I,
+\end{equation}
+where $\matrx \Phi$ and $\matrx \Delta$ were composed according to Table \ref{tbl:kinship}. Without loss of generality, in this study we used identity matrix $\matrx I$ as the matrix $\matrx \Gamma$ in Eq.(\ref{equ:covariance}). The quantitative trait $y_1$ was simulated with the following choices of the parameters: 
+\begin{equation}[\sigma_a^2,~ \sigma_d^2, ~\sigma_e^2,~ \mu_m,~ \mu_f] = [0.8,~ 0.1,~ 0.1,~ 0.9,~ 0.3]. \label{equ:heritability_narrow}
+\end{equation}
+Hence, 80\% of the phenotypic variance was due to additive genetic effects, and the ideal heritability is 0.8 according to Eq.(\ref{equ:heritability_narrow}). By the random nature of the simulation, the actual heritability of the simulated trait may vary a little. 
+
+In order to evaluate if our approach can correct for fixed effects of covariates, we created another quantitative trait $y_2$ by adding effects from age and race to $y_1$. Let $c_1$ and $c_2$ measure the effects of age and race respectively on $y_2$, we calculated $y_2$ as follows: $y_2 = y_1 + c_1 \times age + c_2 \times race$. The values of the two $c$'s were arbitrarily set to $c_1 = 1.1$ and $c_2=0.7$, (which can certainly be set to any other non-zero values). Using SOLAR, we estimated the heritability of $y_1$ with sex as covariate ($h^2 = 0.796$) and the heritability of $y_2$ with sex, age, race as covariates ($h^2 = 0.797$).
+
+We next simulated data of phenotypic features for the two quantitative traits. For each trait, we synthesized a dataset consisting of $d=$10 relevant phenotypic features. We first specified the weights $\vect w$ of the features; then we generated data for these features as follows. For each subject, we randomly picked $d-1$ features and drew their values randomly from the standard multivariate Gaussian distribution. Assume that the $k$-th feature is the remaining feature. Its value for subject $i$ was computed by $(y^i - \sum_{j=1, j\ne k}^{d} w_j x_j^i)/w_k$ (where $w_k \neq 0$ because these 10 features were created with non-zero weights in the linear model). This procedure guaranteed that the trait $y = \sum_{j=1}^d w_j x_j$, and because the feature computed from the values of other features varied randomly among subjects, every feature had a portion of randomly-drawn data. 
+
+In practice, a multivariate trait may not depend on all of the considered phenotypic features. In order to test if our approach can identify the relevant features, we created four other datasets for each of the traits, respectively, consisting of $d=$ 20, 30, 40 and 50 features where only the first 10 of them were created following the above procedure, thus relevant to the simulated traits. The other features were all randomly drawn from standard Gaussian distribution and assigned a weight of 0.
+By simulating the data in this way, there was at least one linear combination of the features in each dataset that led to the simulated traits of high heritability. If our approach is to work, it should find this linear combination which is considered as the groundtruth model. There is a likelihood that another linear combination could give even higher heritability due to the random nature of the data, but this likelihood is small. In our experiments, none of the algorithms could locate any other combinations with higher heritability than the implanted one.
+
+In practice, a multivariate trait may also depend on some features that are not observed. In our simulations, it implied that some of the ten relevant features might be absent. Therein, we further explored how our approach performed in the situation where the data was incomplete by randomly removing relevant features. We experimented with removing one to five relevant features incrementally. Note that in this sensitivity test, there was no longer a groundtruth model for the algorithm to test against because the implanted linear model had been broken with missing features. In this case, if our approach is to work, it should find a combination that leads to a heritability estimate no lower than that of the original features and that derived by other known methods.
+
+The three previous methods evaluated in our comparison all used a regularization condition in their eigenproblem, so they also had a tuning parameter $\lambda$. In the experiments with each dataset, the parameters $\lambda$ of all methods were tuned in the same three-fold cross validation process. 
+More specifically, for each dataset, we randomly split the sample into three groups, and each group had the same amount of unrelated individuals and families with multiple members whenever it was possible. Samples in each group were used in one of the three folds, respectively, as the validation data to test the heritability of the trait derived by a method from the rest of the samples. We repeated this three-fold cross validation with 10 random splits for each choice of $\lambda$ on each dataset. The choices of $\lambda$ were pre-specified to the range of $[0,50]$ with a step size of $1$. For each method, the choice of $\lambda$ that gave the best cross validated heritability was used in the subsequent analysis.
+
+In the experiments with the trait $y_1$, all methods did not use covariate data as the trait was not simulated with fixed effects. In the experiments with the trait $y_2$, because Ott \cite{Ott:1999:pch} and Anova \cite{pch:Oualkacha:2012} could not take into account any covariate, we compared our approach with only the maximum likelihood method (ML) \cite{mendal2013} with sex, age and race as covariates for fair comparison. The ML software package, downloaded from http://www.genetics.ucla.edu/software/mendel, had the default maximum number of iterations equal to $200$, and we also experimented with $500$ and $1000$.  We observed that the ML method could not reach convergence in the experiments with even 20 phenotypic features within a reasonable time limit (two days). Due to this computational hurdle, the ML method could not be applied to datasets with over 20 features.
+
+
+
+\subsubsection*{Observations from simulations}
+We first examined the algorithmic behavior of the proposed approach. Fig \ref{fig:simu_cv_sex_only} shows box plots of three-fold cross validated heritability (average values over the 10 trials and standard deviations) of the linear models derived by our approach for the simulated trait $y_1$ from the five datasets. We observed that the proposed method was able to recover the linearly-combined traits with a relatively wide range of $\lambda$ choices. From Fig \ref{fig:simu_cv_sex_only}, when $\lambda$ = 1, 1, 13, 18, and 18 respectively for the five datasets, the best validation heritability was obtained. This observation shows that when the underlying model gets sparse, larger $\lambda$ is favorable to prevent overfitting by removing irrelevant features. We had similar observations in the experiments with $y_2$ as shown in Fig \ref{fig:simu_cv_all_cov}. Fig \ref{fig:simu_cv_all_cov} reports the same box plots for the simulated trait $y_2$.  The validation heritability of the derived traits were high (with a small decrease when more irrelevant features were experimented), which demonstrated that the proposed approach could effectively correct for covariates in finding heritable components. 
+\begin{figure}[h!]
+\vskip 0.2in
+\begin{center}
+%\centerline{\includegraphics[width=1\columnwidth,natwidth=449,natheight=294]{box-plot-sex-only.eps}}
+\caption{Three-fold cross validated heritability of the linear models derived for the trait $y_1$ (simulated without covariate effects) when $\lambda$ varies from 0 to 50 with a step size 1, on synthetic datasets consisting of 10, 20, 30, 40 and 50 features }
+\label{fig:simu_cv_sex_only}
+\end{center}
+\vskip -0.2in
+\end{figure}
+\begin{figure}[h!]
+\vskip 0.2in
+\begin{center}
+%\centerline{\includegraphics[width=1\columnwidth,natwidth=449,natheight=294]{box-plot-all-cov.eps}}
+\caption{Three-fold cross validated heritability of the linear models derived for the trait $y_2$ (simulated with covariate effects) when $\lambda$ varies from 0 to 50 with a step size 1, on synthetic datasets consisting of 10, 20, 30, 40 and 50 features.}
+\label{fig:simu_cv_all_cov}
+\end{center}
+\vskip -0.2in
+\end{figure}
+
+We next examined the comparison of our approach against the state of the art. To be more thorough, we compared all four methods using four different metrics including validated heritablity, sum of squared residuals to the simulated trait $y_1$ or $y_2$ (SE(trait)), squared difference between the learned weights $\hat{\vect w}$ and the true weights $\vect w$, i.e., $||\vect w - \hat{\vect w}||^2$ (SE($\vect w$)), as well as the computation cost. Table \ref{tbl:test-h2r-comp} shows the cross validated heritability of the traits derived by each of the methods in the two sets of experiments with $y_1$ and $y_2$. The performance was reported with the best $\lambda$ choice of each method. It is clear that the traits derived by our approach always achieved the highest heritability.
+\begin{table}[h!]
+	\caption{Cross validated heritability of the traits derived by different methods in the experiments without covariates (results are presented in rows from 2 to 5) and with covariates (results are presented in rows 6 and 7). }
+	\label{tbl:test-h2r-comp}
+	\vskip 0.15in
+	\begin{center}
+		\begin{small}
+			\setlength{\tabcolsep}{4pt}
+			\begin{tabular}{lcccccc}
+				\hline
+				Method	 &  10 features	 &  20 features   & 30 features	 & 40 features    & 50 features        \\
+				\hline
+				Proposed 	&	{\bf 0.777}(0.009)	&	{\bf 0.724}(0.027)	&	{\bf 0.707}(0.018)	&	{\bf 0.717}(0.021)	&	{\bf 0.670}(0.024)  \\
+				Anova 	&	0.638(0.063)	&	0.581(0.043)	&	0.430(0.042)	&	0.551(0.050)	&	0.447(0.060)  \\
+				Ott 	&	0.378(0.049)	&	0.465(0.080)	&	0.292(0.048)	&	0.398(0.036)	&	0.352(0.065)  \\
+				ML 	&	0.755(0.020)	&	0.046(0.032)	&	$-$	&	$-$	&	$-$  \\
+				\hline
+				Proposed 	&	0.775(0.010)	&	0.735(0.023)	&	0.738(0.030)	&	0.708(0.031)	&	0.644(0.051) \\
+				ML 	&	0.708(0.097)	&	0.044(0.037)	&	$-$	&	$-$	&	$-$  \\
+				\hline
+			\end{tabular}
+		\end{small}
+	\end{center}
+	{\footnotesize The ``$-$" sign indicates that those experiments were infeasible due to prohibitive computation cost.} 
+	\vskip -0.1in
+\end{table}
+
+
+Table \ref{tbl:time-cost} compares the values of SE(trait), SE($\vect w$), and the computation time in seconds. In particular, the computation cost was measured by running each of the methods on the full datasets when the best $\lambda$ value was used. Across all the datasets, our approach obtained the smallest errors as measured by SE(trait) and SE($\vect w$). Because Anova used analytic formula to compute covariance matrices, and Ott used a single locus in the covariance estimation, both methods required slightly less computation cost than our approach. However, they were limited only to the situations that had no confounding factors (covariates or other loci) in the heritability calculation. Between the two comprehensive methods, our approach was significantly more efficient than the ML method in computation, making the heritable component analysis with a large number of phenotypic features feasible.  
+\begin{table}[!ht]
+\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+	\caption{Comparison of the methods on the sum of squared residuals (SE(trait)), squared difference of the true weights and the learned weights (SE($\vect w$)), and the computation time (in seconds) in the experiments without covariates (results are presented in rows from 3 to 7) and with covariates (results are presented in rows from 8 to 12).}
+	\label{tbl:time-cost}
+	\vskip 0.15in
+	\begin{center}
+		\begin{small}
+			\setlength{\tabcolsep}{4pt}
+			\begin{tabular}{lccccccccccccccc}
+				\hline
+				\multirow{2}{*}{Dataset}	 &  \multicolumn{4}{c}{SE(trait)}	 &     &\multicolumn{4}{c}{SE($\vect w$)}	 &     & \multicolumn{4}{c}{Computation Time (sec.)}        \\
+				\cline{2-5} \cline{7-10} \cline{12-15}
+				& Proposed & Anova & Ott & ML & & Proposed & Anova & Ott & ML & & Proposed & Anova & Ott & ML \\
+				%5 features & 202.69	&	64.91	&	80.06	&	59.73	& &	NaN	&	NaN	&	NaN	&	NaN	& &	0.33	&	0.21	&	0.11	&	1.36e+02  \\
+				10 features & {\bf 10.89}	&	59.03	&	67.44	&	57.97	& &	{\bf 0.09}	&	1.35	&	1.38	&	1.34	& &	0.61	&	0.17	&	0.11	&	8.24e+02  \\
+				20 features & {\bf 16.62}	&	60.83	&	63.08	&	128.01	& &	{\bf 0.17}	&	1.37	&	1.39	&	2.54	& &	0.85	&	0.19	&	0.15	&	1.16e+04  \\
+				30 features & {\bf 19.69}	&	63.03	&	72.46	&	$-$	& &	{\bf 0.21}	&	1.38	&	1.48	&	$-$	& &	0.90	&	0.19	&	0.14	&	$-$  \\
+				40 features & {\bf 23.31}	&	62.71	&	68.39	&	$-$	& &	{\bf 0.27}	&	1.39	&	1.44	&	$-$	& &	0.98	&	0.29	&	0.23	&	$-$  \\
+				50 features & {\bf 25.23}	&	64.22	&	67.23	&	$-$	& &	{\bf 0.29}	&	1.40	&	1.43	&	$-$	& &	2.13	&	0.30	&	0.26	&	$-$\\ 
+				\hline
+				10 features	&{\bf 13.61}	& $*$ &	$*$ & 85.98	&	&	{\bf 0.11}	& $*$ &	$*$ &	1.35	&		&	0.86	&	$*$ & $*$ & 8.85e+02 \\
+				20 features	&{\bf 16.14}	& $*$ &	$*$ &	173.40	&	&	{\bf 0.18}	& $*$ &	$*$ &	2.58	&		&	1.07	& $*$ &	$*$ &	1.20e+04  \\
+				30 features	&{\bf 26.60}	& $*$ &	$*$ &	$-$	&		&	{\bf 0.31}	& $*$ &	$*$ &	$-$	&		&	1.30	& $*$ &	$*$ &	$-$  \\
+				40 features	&{\bf 26.81}	& $*$ &	$*$ &	$-$	&		&	{\bf 0.29}	& $*$ &	$*$ &	$-$	&		&	1.61	& $*$ &	$*$ &	$-$  \\
+				50 features	&{\bf 25.87}	& $*$ &	$*$ &	$-$	&		&	{\bf 0.31}	& $*$ &	$*$ &	$-$	&		&	2.52	& $*$ &	$*$ &	$-$  \\
+				\hline
+			\end{tabular}
+		\end{small}
+	\end{center}
+	{\footnotesize The ``$-$" sign indicates that those experiments were infeasible due to prohibitive computation cost.} 
+	{\footnotesize The ``$*$" sign indicates that the corresponding methods were not tested due to the limitation of the methods that could not handle covariates. }
+		{\footnotesize The computation time reported for the ML method was measured when the maximum number of iterations was set to 200. }
+	\vskip -0.1in
+\end{adjustwidth}
+\end{table}
+
+Our approach identified multivariate traits of much higher heritability than the commonly used traits. We compared the heritability of the traits derived by our approach against that of commonly-used features. We used the traits derived by our approach from the cross validation process when the best $\lambda$ values were used. As shown in Figs \ref{fig:simu_comp_sex_only} (without covariates) and \ref{fig:simu_comp_all_cov} (with covariates), the validation heritability of the derived traits were significantly higher than that of individual features and the average of them. 
+%\centerline{\includegraphics[width=1\columnwidth,natwidth=449,natheight=294]{heirt-compare-bar-sex-only.eps}}
+\begin{figure}[h!]
+\begin{center}
+%\centerline{\includegraphics[width=0.8\columnwidth]{heirt-compare-bar-sex-only.eps}}
+\caption{Heritability comparison between the trait derived by the proposed approach, individual features and the simple average of features (without covariate effects).}
+\vspace{-0.2in}
+\label{fig:simu_comp_sex_only}
+\end{center}
+\end{figure}
+\begin{figure}[h!]
+\begin{center}
+%\centerline{\includegraphics[width=0.8\columnwidth]{heirt-compare-bar-all-cov.eps}}
+\caption{Heritability comparison between the trait derived by the proposed approach, individual features and the simple average of features (with covariate effects).} \vspace{-0.2in}
+\label{fig:simu_comp_all_cov}
+\end{center}
+\end{figure}
+
+Without loss of generality, we used the 20 feature dataset that we synthesized for $y_1$ to evaluate if our approach could still find heritable components when the groundtruth models were broken. The results are reported in Fig \ref{fig:simu_incomp} where we compared the heritability of our derived traits against the maximum heritability that other methods could reach and that of the original features. Clearly, the traits derived by our approach achieved much higher heritability. 
+\begin{figure}[h!]
+	\begin{center}
+%		\centerline{\includegraphics[width=0.85\columnwidth]{imcomplete-data-sex-only.eps}}
+		\caption{Heritability comparison between the traits derived by the proposed approach, by other methods, and original features when relevant features were randomly selected and excluded from the training data.}
+		\label{fig:simu_incomp}
+	\end{center}
+\end{figure}
+ 
+
+\subsection*{A Case Study: Cocaine Use and Related Behaviors}
+We applied the proposed approach to a genetic study of cocaine use and related behaviors. Two independent sets of samples were used in our analysis: the SSADDA dataset \cite{Gelernter:CD:2014}, which was used for discovery; and the {\em Study of Addiction: Genetics and Environment} (SAGE) dataset \cite{sage:publicdata:2009}, which was used for replication of the SSADDA findings. The SAGE data were aggregated from multiple NIH-funded projects \cite{Bierut:2008:drug_use} by NIH's dbGap system. We downloaded the data from the dbGap public domain \cite{sage:publicdata:2009} through dbGap accession number phs000092.v1.p.
+
+The SSADDA sample included 4895 unrelated individuals which were used in our analysis to help estimate the total phenotypic variance even though they had no effect on the covariance estimates.  The SAGE dataset consisted of 58 individuals from nuclear families and 1603 unrelated individuals. The two datasets contained samples from two populations: African American (AA) and European American (EA). 
+
+All subjects were reported to have used cocaine in their lifetime, and were assessed on the following 13 features of cocaine use and related behaviors:
+\begin{itemize} \itemsep 1pt \parskip 0pt
+	\item {\em F1} - tolerance to cocaine; 
+	\item {\em F2} - withdrawal from cocaine; 
+	\item {\em F3} - using cocaine in larger amounts or over longer period than intended; 
+	\item {\em F4} - persistent desire or unsuccessful efforts to cut down or control cocaine use; 
+	\item {\em F5} - great amount of time spent in activities necessary to obtain, use or recover from the effects of cocaine; 
+	\item {\em F6} - gave up or reduced important social, occupational, or recreational activities because of cocaine use; 
+	\item {\em F7} - cocaine use despite knowledge of persistent or recurrent physical or psychological problems likely to have been caused or exacerbated by cocaine; 
+	\item {\em F8} - number of cocaine symptom endorsed;
+	\item {\em F9} - age when first used cocaine;
+	\item {\em F10} - age when last used cocaine;
+	\item {\em F11} - age when first being diagnosed with DSM4 cocaine dependence;
+	\item {\em F12} - age when last being diagnosed with DSM4 cocaine dependence;
+	\item {\em F13} - transition time in years between the first time cocaine use and the first cocaine dependence diagnosis. 
+\end{itemize}
+Features {\em F1-F7} were binary variables that took a value of ``yes=1" or ``no=0", and {\em F8-F13} were continuous variables, which we normalized to the range of $[0,1]$ in the analysis. 
+
+The majority of the 6810 subjects interviewed with the SSADDA, were genotyped on an Illumina microarray for 988,306 autosomal single-nucleotide polymorphisms (SNPs). Genotypes for additional 37,427,733 SNPs were imputed using IMPUTE2 \cite{impute2:2009} from genotyped SNPs and 1000 Genomes reference panel released in June 2011 (http://www.1000genomes.org). Both subjects and SNPs were undergone stringent quality control (readers can consult with \cite{Gelernter:CD:2014} for details). After data cleaning, there were a total of 4,845 subjects (2674 AAs, 2171 EAs) and 30,078,279 SNPs (695,308 genotyped) remained for analysis. Top three ancestral principal components were computed using 145,472 SNPs that were common to discovery samples and the Hapmap panel. All of the 1661 SAGE subjects (640 AAs, 1021 EAs) in the replication dataset were genotyped for 1,072,657 SNPs. 
+
+We derived a multivariate trait based on the 13 features of cocaine use and related behaviors. This trait was derived from the SSADDA data by Algorithm 1 with a correction for the fixed effects of age and race. Three-fold cross validation was performed to find the optimal $\lambda$, which was subsequently used to find a linearly combined trait from the 13 features based on the entire SSADDA data. The heritability of the derived trait was estimated and compared to that of individual quantitative features in the data, including the cocaine symptom count ({\em F8}). The feature {\em F8} was recognized as a better trait than the binary trait induced by the diagnosis of cocaine dependence in a recent genomewide association study (GWAS) \cite{Gelernter:CD:2014}. We compared the utility of the derived trait and the symptom count as traits in an association analysis. Association tests were performed on the SSADDA sample for both traits and separately for EAs and AAs to identify significant genetic markers at $p < 5\times 10^{-6}$. We then computed the derived trait for the subjects in the replication SAGE sample. The markers identified from the SSADDA data were tested using the replication subjects. All tests included age, sex and the first three ancestral principal components as covariates. The association test results on discovery and replication data were combined by performing meta analysis using Metal \cite{metal:2010}. Genomewide associations were identified from the meta analysis. Note that the heritability of the derived trait was not estimated on the SAGE data because 97\% of the SAGE subjects were unrelated individuals.
+
+Fig \ref{fig:coc_cv} shows the box plots of the cross validated heritability of the traits derived by Algorithm 1 when $\lambda$ varied from 1 to 50 with a step size 1.  When $\lambda = 2$, we observed the highest heritability on average in the cross validation. We hence used $\lambda = 2$ in Algorithm 1, and derived a linear combination of the features from the entire SSADDA data. The heritability of the derived trait and all individual quantitative features was estimated using SOLAR and reported in Table \ref{tbl:coc_heritability}. The quantitative trait derived by our approach has substantially higher heritability than that of all other traits.  
+\begin{figure}[ht]
+	\vskip 0.2in
+	\begin{center}
+%		\centerline{\includegraphics[width=1\columnwidth,natwidth=1436,natheight=819]{coc-cvbox-plot.eps}}
+		\caption{Validation heritability of the multivariate traits derived by our approach for cocaine use and related behaviors using different values of $\lambda$.}
+		\label{fig:coc_cv}
+	\end{center}
+	\vskip -0.2in
+\end{figure}
+\begin{table}[t]
+	\caption{Heritability estimates for the multivariate trait derived by the proposed method and all individual quantitative features in the data.}
+	\label{tbl:coc_heritability}
+	\vskip 0.15in
+	\begin{center}
+		\begin{small}
+			
+			\begin{tabular}{lccc}
+				\hline
+				Traits	                                          &  heritability	      &$p$-value	      &standard deviation        \\
+				\hline
+				Trait derived by proposed method	                          & {\bf 0.70} & $4.36\times 10^{-22}$ & 0.06   \\
+				Cocaine symptom count                                       &  0.41 &	$1.52\times 10^{-08}$	& 0.07   \\
+				Age when first used cocaine                                   &  0.39 &	$2.41\times 10^{-09}$	& 0.07   \\
+				Age when last used cocaine                                    &  0.35 &	$6.70\times 10^{-06}$	& 0.10   \\
+				Age when first CD diagnosis                                   &  0.43 &	$1.15\times 10^{-10}$	& 0.07   \\
+				Age when last CD diagnosis                                    &  0.38 &	$5.99\times 10^{-09}$	& 0.07   \\
+				Transition time between first & \multirow{2}{*}{0.42} &	\multirow{2}{*}{$8.09\times 10^{-10}$}	& \multirow{2}{*}{0.07} \\
+				cocaine use and CD diagnosis  &    & 	&     \\ 
+				\hline
+			\end{tabular}
+			
+		\end{small}
+	\end{center}
+	\vskip -0.1in
+\end{table}
+
+Using a regularization condition based on the sparsity-favoring $\ell_1$ vector norm created shrinkage effects on our model. In other words, our approach selected parsimonious features to use in the linear combination.  Fig \ref{fig:coc_weights_bar_plot} shows the combination weights of the features obtained in our model. Five of the 13 features had weight of 0, thus were not used by the model. The feature - {\em age when first used cocaine} received the largest positive weight and therefore had the strongest impact on the derived trait. The other four important features were {\em F11} - {\em age onset of DSM4 CD diagnosis}, {\em F4} - {\em persistent desire or unsuccessful efforts to cut down or control cocaine use}, {\em F5} - {\em great amount of time spent in activities necessary to obtain, use or recover from the effects of cocaine}, and {\em F3} - {\em using cocaine in larger amounts or over longer period than intended}. Features {\em F6}, {\em F1} and {\em F2} had some but limited effect on the derived trait. 
+%The values of the derived trait computed on the discovery sample are analyzed in a histogram plot in Fig \ref{fig:coc_trait_historgram}.
+\begin{figure}[ht]
+	\vskip 0.2in
+	\begin{center}
+%		\centerline{\includegraphics[width=1\columnwidth,natwidth=1200,natheight=900]{coc-feature-weights.eps}}
+		\caption{Weights of the eight clinical features in the linear model of the composite trait derived by our approach to the evaluation of cocaine use and related behaviors.}
+		\label{fig:coc_weights_bar_plot}
+	\end{center}
+	\vskip -0.2in
+\end{figure}
+
+%\begin{figure}[ht]
+%	\vskip 0.2in
+%	\begin{center}
+%		\centerline{\includegraphics[width=1\columnwidth,natwidth=1201,natheight=819]{coc-score-histogram.eps}}
+%		\caption{Distribution of the trait values computed on the discovery sample.}
+%		\label{fig:coc_trait_historgram}
+%	\end{center}
+%	\vskip -0.2in
+%\end{figure}
+
+We identified three SNPs for the AA population and four SNPs for the EA population that passed our $p$-value threshold ($5\times 10^{-6}$) in the genomewide association tests with the discovery sample. These SNPs are listed in Table \ref{tbl:association_coc}. In recent GWAS of substance use disorders, meta analysis was commonly used to identify genomewide significant associations, e.g., \cite{Gelernter:AD:2014,Gelernter:CD:2014,Gelernter:OD:2014}. Following the same strategy in \cite{Gelernter:CD:2014}, we identified significant markers from the meta analysis results. Another recent study that used the same 1000 Genomes reference panel identified that $10^{-8}$ is an appropriate p-value threshold for use in a GWAS that employs imputed SNPs \cite{muli:test:crt:li:2012}. Based on this threshold, the markers rs833936 and rs7224135 in Table \ref{tbl:association_coc} were significantly associated with the derived trait at the genomewide level, respectively for AAs and EAs, but not with the commonly-used cocaine symptom count. The other five markers in Table \ref{tbl:association_coc} were nominally significantly ($1\times 10^{-8}<$ meta $p$-value $< 5\times 10^{-6}$) associated with the derived trait only. In other words, using the standard phenotype in association tests would not discover these SNPs that are associated with a specific subtype (a quantitative subphenotype) of cocaine dependence. The marker rs833936 is located at the  {\em TXNIP} gene which may act as an oxidative stress mediator when its expression is suppressed by synaptic activity in brain \cite{Karen:2009}. Two markers rs11079045 and rs7224135 are located at the {\em PTRF} gene which has been identified to be associated with cocaine abuse in an early transcriptional change study \cite{Lehrmann:Elin:2006}. The {\em EFEMP1} gene has not been reported in the genetic analysis of cocaine dependence. Since all the identified SNP markers have not been thoroughly studied in genetics of cocaine dependence, our findings may promote subsequent investigations for these genes as well as subtypes of cocaine dependence. The proposed heritable component analysis for multivariate phenotypes may provide a new strategy to improve genomewide association studies of complex disorders.
+
+\begin{table}[t]
+\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+	\caption{Top findings obtained by the genome-wide association analysis with the derived subphenotype.}
+	\label{tbl:association_coc}
+	\vskip 0.15in
+	\begin{center}
+		\begin{scriptsize}
+			\setlength{\tabcolsep}{2pt}
+			\begin{tabular}{llcccccccccccc}
+				\toprule
+				\multirow{2}{*}{} & \multirow{2}{*}{SNP} & \multirow{2}{*}{Chr} &   \multirow{2}{*}{Gene} & \multicolumn{3}{c}{Discovery}  & \phantom{a} & \multicolumn{3}{c}{Replication} & \phantom{a} &  \multicolumn{2}{c}{Meta} \\
+				\cmidrule{5-7} \cmidrule{9-11} \cmidrule{13-14}
+				&            &          &      & MAF  & $p_{derived}$        & $p_{symp}$      &     & MAF  & $p_{derived}$        & $p_{symp}$      &     & $p_{derived}$        & $p_{symp}$            \\
+				\midrule
+				\multirow{3}{*}{AA}    &  rs769065    & 6  &  \textit{DNAH8}  & 0.26 & $6.14\times 10^{-6}$ & $9.62\times 10^{-2}$ && 0.03 & $8.74\times 10^{-3}$ & $3.58\times 10^{-2}$ && $1.85\times 10^{-7}$ & $1.57\times 10^{-2}$ \\
+				& {\bf rs833936}& 1   &  \textit{TXNIP}  & 0.36 & $7.90\times 10^{-8}$ & $2.51\times 10^{-2}$ && 0.12 & $2.22\times 10^{-2}$ & $1.76\times 10^{-2}$ && $\mathbf{5.59\times 10^{-9}}$& $2.43\times 10^{-3}$ \\
+				& rs75621732     & 11  &  \textit{MLSTD2} & 0.06 & $1.89\times 10^{-6}$ & $1.85\times 10^{-1}$ && 0.35 & $4.95\times 10^{-2}$ & $5.60\times 10^{-1}$ && $2.70\times 10^{-7}$ & $1.48\times 10^{-1}$ \\
+				\midrule
+				\multirow{4}{*}{EA}&{rs11079045}    & 17  &  \textit{PTRF}& 0.40 & $2.48\times 10^{-6}$ & $2.24\times 10^{-1}$ && 0.42 & $1.48\times 10^{-3}$ & $2.24\times 10^{-1}$ && $1.33\times 10^{-8}$ & $1.82\times 10^{-1}$ \\
+				& {\bf rs7224135}     & 17  &  \textit{PTRF}& 0.40 & $7.61\times 10^{-7}$ & $1.50\times 10^{-1}$ && 0.41 & $2.29\times 10^{-3}$ & $1.50\times 10^{-1}$ && $\mathbf{6.51\times 10^{-9}}$ & $1.08\times 10^{-1}$ \\
+				& {rs10490394}    & 2   &  \textit{EFEMP1}& 0.20 & $8.78\times 10^{-7}$ & $1.53\times 10^{-1}$ && 0.19 & $9.15\times 10^{-3}$ & $1.53\times 10^{-1}$ &&$3.22\times 10^{-8}$& $2.33\times 10^{-1}$ \\
+				& rs7330895     & 13  &  \textit{DACH1}  & 0.39 & $7.50\times 10^{-6}$ & $6.00\times 10^{-2}$ && 0.34 & $2.81\times 10^{-2}$ & $6.00\times 10^{-2}$ && $8.00\times 10^{-7}$ & $2.80\times 10^{-3}$ \\
+				\bottomrule
+			\end{tabular}
+		\end{scriptsize}
+	\end{center}
+	{\footnotesize Notes: Chr - chromosome; MAF - minor allele frequency; $p_{derived}$ - the $p$-value obtained with the trait derived by the proposed method; $p_{symp}$ - the $p$-value obtained with the cocaine symptom count.} 
+%	{\footnotesize SNPs: rs769065, rs833936 and rs75621732 were tested using their close linkage equilibrium (LD) proxies: rs12215108 (602 bp downstream), rs4636400 (1004 bp upstream) and rs1730833 (80 bp upstream), respectively in replication data, because these SNPs were not available in this data.  For these SNPs, the corresponding MAFs in the table belong to their proxies. } 
+	{\footnotesize SNPs with $p$-values that reach genome-wide significant level ($<10^{-8}$) are in bold font. }
+	\vskip -0.1in
+\end{adjustwidth}
+\end{table}
+
+\section*{Discussion and Conclusion}
+\label{sec:discussion}
+In this paper, we have proposed a quadratic optimization formulation that is capable of identifying highly heritable components of complex phenotypes. The multivariate trait is derived as a linear function $y=\vect x^\top \vect w$ of lower level traits $\vect x$ by explicitly maximizing its heritability. Specifically, we search for the optimal $\vect w$ that maximizes the likelihood of observing a high value of heritability. This is equivalent to finding the best $\vect w$, so that the projected trait $\vect x^\top \vect w$ will be best aligned with the kinship matrix $\matrx \Phi$ of the pedigree. An efficient algorithm based on sequential quadratic programming has been developed to optimize the proposed formulation. The algorithm is extended to allow the correction for  covariate effects when deriving a heritable component. 
+
+Our simulation study provides evidence of the effectiveness of the proposed approach as a means to find highly heritable components of multivariate phenotypes. Then a case study on the phenotypes of cocaine use and dependence was conducted. A quantitative trait was identified based on thirteen cocaine use symptoms and behaviors. The trait had a heritability estimate of $0.7$ (with $p=4.36\times 10^{-22}$, std $= 0.06$), which was much higher than a standard cocaine-use phenotype, e.g., the symptom-count trait, with heritability of $0.41$. The subsequent phenotype-genotype association study demonstrated important utility of the derived trait for use in association analysis. Our results show that seven SNPs were significantly or nominally significantly associated with the derived subphenotype, but were not associated with the symptom count phenotype. Two out of the seven associated SNPs reached genome-wide significant level after correction for multi-testing following the procedure in \cite{muli:test:crt:li:2012,Gelernter:CD:2014}. 
+
+Our formulation has a hyper-parameter $\lambda$. Using a hyper-parameter is common in machine learning algorithms such as support vector machines \cite{vapnik:1998}. As a hyper-parameter, $\lambda$ is not determined by solving the formulation itself and instead needs to be pre-specified. Both our simulation study and our case study showed that our formulation is fairly robust to the value of $\lambda$ when it is chosen from a reasonably wide range. In real-world applications, hyper-parameters are often determined by a cross-validation process, which was used in our experiments. 
+
+Discovering heritable components of a multivariate phenotype can also improve genomic prediction \cite{deloCampos:2010}. If a trait is highly heritable, a model that is based on genomic markers to predict the trait value can achieve high accuracy \cite{deLosCampos:2013}.  In agricultural science, heritability of the breeding trait is considered to be one of the most important factors for the performance of a breeding program.  Breeding programs targeted at conceptual but economically important phenotypes, such as feed efficiency or heat tolerance of animals, are confronted with a wide variety of available measures for the phenotype \cite{Connor:feedefficiency:2012,boligon:2011}. Residual body weight gain, residual feed intake, or relative growth rate are feed efficiency measures for dairy cattle with heritability ranging from 0.28 to 0.45 \cite{berry:2012,Connor:feedefficiency:2012}. Each of these measures forms a multivariate trait that is defined by a linear function of low level traits, such as body weight, diet and feed energy intake, and days in milk. Our new algorithm can help the identification of more heritable measures for conceptual phenotypes of animal or plant.  
+
+There are limitations of our proposed technique. The non-convex quadratic optimization formulation requires a complex solver, such as sequential quadratic programming. For a sample that contains millions of subjects, it may become computationally prohibitive. More efficient solvers or approximations may be needed to scale up the proposed approach. In some applications, complex grouping structures may exist in the data between different lower level traits. A formulation that takes into account the special data structure may be more useful in producing biologically and clinically meaningful traits. As discussed in the paper, alternative regularization conditions exist, including some that may deal well with complex data structures, such as the one based on $\ell_{2,1}$ vector norm. Algorithms that can solve the formulations with alternative regularization terms need to be developed. Additional empirical studies across different disciplines are needed to evaluate the capability and effectiveness of the proposed approach.
+
+\section*{Acknowledgments}
+ 
+We thank Joel Gelernter, M.D., from Yale University who was instrumental in
+recruiting, characterizing, and genotyping the subjects in the SSADDA dataset used
+here. Kathleen Brady, M.D., Ph.D., of the Medical University of South Carolina,
+Roger Weiss, M.D., of McLean Hospital and Harvard Medical School, and David
+Oslin, M.D., of the University of Pennsylvania Perelman School of Medicine
+oversaw study recruitment at their respective sites. Funding support for that work was provided by NIH.
+
+Funding support for the Study of Addiction: Genetics and Environment (SAGE) was provided through the NIH Genes, Environment and Health Initiative [GEI] (U01 HG004422). SAGE is one of the genome-wide association studies funded as part of the Gene Environment Association Studies (GENEVA) under GEI. The dataset used for the analyses described in this manuscript were obtained from dbGaP at \url{http://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000092.v1.p1} through dbGaP accession number phs000092.v1.p.
+
+
+
+\nolinenumbers
+
+%\section*{References}
+% Either type in your references using
+% \begin{thebibliography}{}
+% \bibitem{}
+% Text
+% \end{thebibliography}
+%
+% OR
+%
+% Compile your BiBTeX database using our plos2015.bst
+% style file and paste the contents of your .bbl file
+% here.
+ 
+\begin{thebibliography}{10}
+
+\bibitem{karp:genomics:2002}
+Karp RM.
+\newblock Mathematical challenges from genomics and molecular biology.
+\newblock Notices of American Mathematics Society. 2002;49(5):544--553.
+
+\bibitem{nature:gwas:2008}
+McCarthy MI, Abecasis GR, Cardon LR, Goldstein DB, Little J, Ioannidis JPA,
+  et~al.
+\newblock Genome-wide association studies for complex traits: consensus,
+  uncertainty and challenges.
+\newblock Nature Reviews Genetics. 2008;9(5):356--369.
+
+\bibitem{Balding2007}
+Balding DJ, Bishop MJ, Cannings C.
+\newblock Handbook of Statistical Genetics.
+\newblock 3rd ed. Chichester, England; Hoboken, NJ: John Wiley \& Sons; 2008.
+
+\bibitem{Girirajan:phhetero:2012}
+Girirajan S, Meschino WS, Nezarati MM, Asamoah A, Jackson KE, Gowans GC, et~al.
+\newblock Phenotypic heterogeneity of genomic disorders and rare copy-number
+  variants.
+\newblock The New England Journal of Medicine. 2012;367(14):1321--1331.
+
+\bibitem{pierucci:2007}
+Pierucci-Lagha A, Gelernter J, Chan G, Arias A, Cubells JF, Farrer L, et~al.
+\newblock Reliability of DSM-IV diagnostic criteria using the semi-structured
+  assessment for drug dependence and alcoholism (SSADDA).
+\newblock Drug and Alcohol Dependence. 2007;91(1):85--90.
+
+\bibitem{Wang:2012:sd_genetic}
+Wang JC, Kapoor M, Goate AM.
+\newblock The genetics of substance dependence.
+\newblock Annu Rev Genomics Hum Genet. 2012;13:241--61.
+
+\bibitem{Gelernter:CD:2014}
+Gelernter J, Sherva R, Koesterer R, Almasy L, Zhao H, Kranzler H, et~al.
+\newblock Genome-wide association study of cocaine dependence and related
+  traits: FAM53B identified as a risk gene.
+\newblock Molecular Psychiatry. 2014;19(6):717--723.
+
+\bibitem{VHu:autism:2011}
+Hu VW, Addington A, Hyman A.
+\newblock Novel autism subtype-dependent genetic variants are revealed by
+  quantitative trait and subphenotype association analyses of published GWAS
+  data.
+\newblock PloS {ONE}. 2011;6(4):e19067.
+
+\bibitem{bi:cdsubtype:2013}
+Bi J, Gelernter J, Sun J, Kranzler HR.
+\newblock Comparing the utility of homogeneous subtypes of cocaine use and
+  related behaviors with {DSM-IV} cocaine dependence as traits for genetic
+  association analysis.
+\newblock American Journal of Medical Genetics (Part B): Neuropsychiatric
+  Genetics. 2013;165B(2):148--156.
+
+\bibitem{Kranzler:2008}
+Kranzler HR, Wilcox M, Weiss RD, Brady K, Hesselbrock V, Rounsaville B, et~al.
+\newblock The validity of cocaine dependence subtypes.
+\newblock Addict Behav. 2008;33(1):41--53.
+
+\bibitem{Chan:2011}
+Chan G, Gelernter J, Oslin D, Farrer L, Kranzler HR.
+\newblock Empirically derived subtypes of opioid use and related behaviors.
+\newblock Addiction. 2011;106(6):1146--1154.
+
+\bibitem{jinbo:subtyping:2011}
+Sun J, Bi J, Chan G, Anton RF, Oslin D, Farrer L, et~al.
+\newblock Improved methods to identify stable, highly heritable subtypes of
+  opioid use and related behaviors.
+\newblock Addictive Behaviors. 2012;37(10):1138--1144.
+
+\bibitem{Ott:1999:pch}
+Ott J, Rabinowitz D.
+\newblock A principal-components approach based on heritability for combining
+  phenotype information [Journal Article].
+\newblock Hum Hered. 1999;49(2):106--11.
+
+\bibitem{Wang:2007:pch-ridge}
+Wang Y, Fang Y, Jin M.
+\newblock A ridge penalized principal-components approach based on heritability
+  for high-dimensional data [Journal Article].
+\newblock Hum Hered. 2007;64(3):182--91.
+
+\bibitem{Klei:2008:pch}
+Klei L, Luca D, Devlin B, Roeder K.
+\newblock Pleiotropy and principal components of heritability combine to
+  increase power for association analysis [Journal Article].
+\newblock Genet Epidemiol. 2008;32(1):9--19.
+
+\bibitem{pch:Oualkacha:2012}
+Oualkacha K, Labbe A, Ciampi A, Roy MA, Maziade M.
+\newblock Principal Components of Heritability for High Dimension Quantitative
+  Traits and General Pedigrees.
+\newblock Statistical Applications in Genetics and Molecular Biology.
+  2012;11(2), DOI: 10.2202/1544-6115.1711.
+
+\bibitem{mendal2013}
+Lange K, Papp J, Sinsheimer J, Sripracha R, Zhou H, Sobel E.
+\newblock Mendel: The Swiss army knife of genetic analysis programs.
+\newblock Bioinformatics. 2013;29:1568--1570.
+
+\bibitem{Lange1976}
+Lange K, Westlake J, Spence MA.
+\newblock Extensions to pedigree analysis. {III}. Variance components by the
+  scoring method.
+\newblock Annals of Human Genetics. 1976;39(4):485--491.
+
+\bibitem{Vapnik:1999:learning_theroy}
+Vapnik VN.
+\newblock An overview of statistical learning theory.
+\newblock {IEEE} Transactions on Neural Networks. 1999;10(5):988--999.
+
+\bibitem{tibshirani:1996}
+Tibshirani R.
+\newblock Regression Shrinkage and Selection via the {LASSO}.
+\newblock Journal of the Royal Statistical Society Series B (Methodological).
+  1996;58(1):267--288.
+
+\bibitem{Meier:groupLASSO:2008}
+Meier L, {Van De Geer} S, B\"{u}hlmann P.
+\newblock The group lasso for logistic regression.
+\newblock Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology). 2008;70(1):53--71.
+
+\bibitem{Nocedal:06}
+Nocedal J, Wright SJ.
+\newblock Numerical Optimization.
+\newblock 2nd ed. New York: Springer; 2006.
+
+\bibitem{Gelernter:OD:2014}
+Gelernter J, Kranzler H, Sherva R, Koesterer R, Almasy L, Zhao H, et~al.
+\newblock Genome-wide association study of opioid dependence: multiple
+  associations mapped to calcium and potassium pathways.
+\newblock Biological Psychiatry. 2014;76(1):66--74.
+
+\bibitem{almasy:1998}
+Almasy L, Blangero J.
+\newblock Multipoint quantitative-trait linkage analysis in general pedigrees.
+\newblock American Journal of Human Genetics. 1998;62(5):1198--1211.
+
+\bibitem{sage:publicdata:2009}
+{National Institutes of Health}.
+\newblock Study of Addiction: Genetics and Environment {(SAGE)}.
+\newblock {{NIH} Project
+  Website},{http://wwwncbinlmnihgov/projects/gap/cgi-bin/studycgi?study\_id=phs000092v1p1}.
+  2009;.
+
+\bibitem{Bierut:2008:drug_use}
+Bierut LJ, Strickland JR, Thompson JR, Afful SE, Cottler LB.
+\newblock Drug use and dependence in cocaine dependent subjects,
+  community-based individuals, and their siblings.
+\newblock Drug and Alcohol Dependence. 2008;95(1-2):14--22.
+
+\bibitem{impute2:2009}
+Howie BN, Donnelly P, Marchini J.
+\newblock A flexible and accurate genotype imputation method for the next
+  generation of genome-wide association studies [Journal Article].
+\newblock PLoS Genet. 2009;5(6):e1000529.
+
+\bibitem{metal:2010}
+Willer CJ, Li Y, Abecasis GR.
+\newblock METAL: fast and efficient meta-analysis of genomewide association
+  scans [Journal Article].
+\newblock Bioinformatics. 2010;26(17):2190--2191.
+
+\bibitem{Gelernter:AD:2014}
+Gelernter J, Kranzler H, Sherva R, Almasy L, Koesterer R, Smith A, et~al.
+\newblock Genome-wide association study of alcohol dependence: significant
+  findings in African-and European-Americans including novel risk loci.
+\newblock Molecular Psychiatry. 2014;19(1):41--49.
+
+\bibitem{muli:test:crt:li:2012}
+Li MX, Yeung JMY, Cherny SS, Sham PC.
+\newblock Evaluating the effective numbers of independent tests and significant
+  p-value thresholds in commercial genotyping arrays and public imputation
+  reference datasets.
+\newblock Human Genetics. 2012;131(5):747--756.
+
+\bibitem{Karen:2009}
+Bell KFS, Soriano FX, Papadia S, Hardingham GE.
+\newblock Role of histone acetylation in the activity-dependent regulation of
+  sulfiredoxin and sestrin 2.
+\newblock Epigenetics. 2009;4(3):152--158.
+
+\bibitem{Lehrmann:Elin:2006}
+Lehrmann E, Colantuoni C, Deep-Soboslay A, Becker KG, Lowe R, Huestis MA,
+  et~al.
+\newblock Transcriptional changes common to human cocaine cannabis and
+  phencyclidine abuse.
+\newblock PLoS ONE. 2006;1(1):e114.
+
+\bibitem{vapnik:1998}
+Vapnik V.
+\newblock Statistical Learning Theory.
+\newblock New York: John Willey \& Sons, Inc; 1998.
+
+\bibitem{deloCampos:2010}
+de~los Campos G, Gianola D, Allison DB.
+\newblock Predicting genetic predisposition in humans: the promise of
+  whole-genome markers.
+\newblock Nature Reviews Genetics. 2010;11(12):880--886.
+
+\bibitem{deLosCampos:2013}
+de~Los~Campos G, Hickey JM, Pong-Wong R, Daetwyler HD, Calus MPL.
+\newblock Whole-genome regression and prediction methods applied to plant and
+  animal breeding.
+\newblock Genetics. 2013;193(2):327--327.
+
+\bibitem{Connor:feedefficiency:2012}
+Connor EE, Hutchison JL, Norman HD.
+\newblock Estimating feed efficiency of lactating dairy cattle using residual
+  feed intake.
+\newblock (Chapter 11) In Feed Efficiency in the Beef Industry, Hill, RA (ed),
+  Wiley-Blackwell, NJ. 2012;.
+
+\bibitem{boligon:2011}
+Boligon A, Mercadante M, Baldi F, L\^{o}bo R, Albuquerque L.
+\newblock Multi-trait and random regression mature weight heritability and
+  breeding value estimates in Nelore cattle.
+\newblock South African Journal of Animal Science. 2009;39(5):145--148.
+
+\bibitem{berry:2012}
+Berry DP, Crowley JJ.
+\newblock Residual intake and body weight gain: a new measure of efficiency in
+  growing cattle.
+\newblock Journal of animal science. 2012;90(1):109--115.
+
+\end{thebibliography}
+
+
+%\bibliography{biblio_medicine_javon,biblio_javon,biblio_jinbo,genetic_analysis_literature,phenotype_analysis_literature}
+
+
+\end{document}
+
